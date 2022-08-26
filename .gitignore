@@ -1,8 +1,15 @@
+# Customized
 *
 !/**/
 !*.*
+.project
+.settings/
+Debug/
+.idea
+cmake-build-debug
+.vscode
+.DS_Store
 
->>>>>>> init
 # Prerequisites
 *.d
 
@@ -55,12 +62,3 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-
-.project
-.settings/
-Debug/
-.idea
-cmake-build-debug
-.vscode
-.DS_Store
->>>>>>> init
