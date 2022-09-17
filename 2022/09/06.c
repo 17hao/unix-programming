@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Seek to the head of file.
 void seekToHead(FILE *f) {
-    // Seek to the head of file.
     if (fseek(f, 0, SEEK_SET) != 0) {
         strerror(errno);
         exit(EXIT_FAILURE);
