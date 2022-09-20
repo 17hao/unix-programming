@@ -26,12 +26,12 @@ int main() {
     }
 
     // fsanf
-    int max_tcp_backlog;
-    fscanf(f1, "%d", &max_tcp_backlog);
-    printf("max_tcp_backlog=%d\n", max_tcp_backlog);
-    int syn_backlog;
-    fscanf(f2, "%d", &syn_backlog);
-    printf("syn_backlog=%d\n", syn_backlog);
+    int maxTCPBacklog;
+    fscanf(f1, "%d", &maxTCPBacklog);
+    printf("max_tcp_backlog=%d\n", maxTCPBacklog);
+    int synBacklog;
+    fscanf(f2, "%d", &synBacklog);
+    printf("syn_backlog=%d\n", synBacklog);
 
     seekToHead(f1);
 
