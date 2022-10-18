@@ -4,6 +4,7 @@
 
 // Usage: ./t_execve ./envargs
 // execve: v means argv, e means environ
+// execve 通常和 fork 一起使用
 int main(int argc, char *argv[]) {
   char *envVec[10];
   envVec[0] = "k1=v1";
