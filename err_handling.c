@@ -9,10 +9,12 @@ int main() {
   int fd = open("foo", O_RDONLY);
   if (fd == -1) {
     if (errno == ENOENT) {
+      printf("=== perror ===\n");
       perror("open");  // fcntl.h open: No such file or directory
-    } else {
-      strerror(errno);  // string.h
     }
+    printf("=== stderror ===\n");
+    char *err = strerror(errno);  // string.h
+    fprintf(stderr, "%s\n", err);
     exit(EXIT_FAILURE);
   }
 }
