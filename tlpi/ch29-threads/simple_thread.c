@@ -2,9 +2,9 @@
 // Creating a new thread and join with it.
 
 #include <pthread.h>
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void *threadFunc(void *args) {
   char *s = (char *)args;
@@ -24,5 +24,5 @@ int main(void) {
 
   void *res;
   pthread_join(thread, &res);
-  printf("Thread returned %ld\n", (long) res);
+  printf("Thread returned %ld\n", (long)res);
 }
