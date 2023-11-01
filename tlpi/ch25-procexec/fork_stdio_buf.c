@@ -36,9 +36,9 @@ void v2() {
 
 /*
 Usage:
-cc fork_stdio_buf.c
+cc -D V1 fork_stdio_buf.c
 ./a.out
-./a.out > tmp && cat tmp
+./a.out >| tmp && cat tmp
 
 
 1. printf的输出保存在stdio buffer，属于用户态的一部分;write的输出写入到kernle buffer
@@ -48,6 +48,11 @@ cc fork_stdio_buf.c
 5. terminal重定向到文件时，printf的输出仍在用户态stdio buffer,直到执行exit才被刷新到kernel buffer,所以晚于write输出
 */
 int main() {
+#ifdef V1
+  // printf("v1\n");
   v1();
-  // v2();
+#else
+  // printf("v2\n");
+  v2();
+#endif
 }
