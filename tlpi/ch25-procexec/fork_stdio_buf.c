@@ -34,6 +34,19 @@ void v2() {
   }
 }
 
+void v3() {
+  setbuf(stdout, NULL);
+  printf("hello, world\n");
+  write(STDOUT_FILENO, "abc\n", 4);
+
+  if (fork() == -1) {
+    perror("fork");
+    exit(EXIT_FAILURE);
+  }
+
+  exit(EXIT_SUCCESS);
+}
+
 /*
 Usage:
 cc -D V1 fork_stdio_buf.c
@@ -51,8 +64,10 @@ int main() {
 #ifdef V1
   // printf("v1\n");
   v1();
-#else
+#elif V2
   // printf("v2\n");
   v2();
+#else
+  v3();
 #endif
 }
