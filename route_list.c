@@ -97,7 +97,7 @@ int getRouteDumpResponse(int sock) {
     return -1;
   }
 
-  struct nlmsghdr *nlmsg = (struct nlmsghdr *)buf;
+  struct nlmsghdr *nlmsg = (struct nlmsghdr *)buf; // Undefined Behavior
   while (NLMSG_OK(nlmsg, len)) {
     if (nlmsg->nlmsg_type == RTM_NEWROUTE) {
       rtnlPrintRoute(nlmsg);
