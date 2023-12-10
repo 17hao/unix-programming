@@ -4,7 +4,7 @@
 struct ListNode {
   int val;
   struct ListNode *next;
-  void (*addToTail)(struct ListNode *self, struct ListNode *node);
+  void (*addToTail)(struct ListNode *self, struct ListNode *node); // function pointer
   char *(*toString)(struct ListNode *self);
 };
 
