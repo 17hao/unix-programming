@@ -1,5 +1,5 @@
 struct ListNode {
-  int val;
-  struct ListNode *next;
-  struct ListNode *pre;
+    int val;
+    struct ListNode *next;
+    struct ListNode *pre;
 };

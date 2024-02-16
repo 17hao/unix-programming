@@ -1,6 +1,6 @@
 struct Queue {
-  struct ListNode *head;
-  struct ListNode *tail;
+    struct ListNode *head;
+    struct ListNode *tail;
 };
 
 // queue push

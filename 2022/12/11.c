@@ -12,33 +12,33 @@
 #include <unistd.h>
 
 int main(void) {
-  printf("[pid=%d]  hello, world\n", getpid());
+    printf("[pid=%d]  hello, world\n", getpid());
 
-  pid_t pid = fork();
-  if (pid < 0) {
-    fprintf(stderr, "fork faild.\n");
-    exit(EXIT_FAILURE);
-  } else if (pid == 0) {  // child process
-    printf("[pid=%d]  I am child process\n", getpid());
-    printf("wc 11.c\n");
-    char *args[2];
-    args[0] = "wc";
-    args[1] = "11.c";
-    args[2] = NULL;
-    int res = execvp("wc", args);
-    if (res < 0) {
-      fprintf(stderr, "%s\n", strerror(errno));
-      exit(EXIT_FAILURE);
+    pid_t pid = fork();
+    if (pid < 0) {
+        fprintf(stderr, "fork faild.\n");
+        exit(EXIT_FAILURE);
+    } else if (pid == 0) { // child process
+        printf("[pid=%d]  I am child process\n", getpid());
+        printf("wc 11.c\n");
+        char *args[2];
+        args[0] = "wc";
+        args[1] = "11.c";
+        args[2] = NULL;
+        int res = execvp("wc", args);
+        if (res < 0) {
+            fprintf(stderr, "%s\n", strerror(errno));
+            exit(EXIT_FAILURE);
+        }
+        exit(EXIT_SUCCESS);
+    } else {
+        pid_t child = wait(NULL);
+        if (child < 0) {
+            fprintf(stderr, "wait failed.\n");
+            exit(EXIT_FAILURE);
+        }
+        printf("[pid=%d]  child process=%d\n", getpid(), pid);
     }
-    exit(EXIT_SUCCESS);
-  } else {
-    pid_t child = wait(NULL);
-    if (child < 0) {
-      fprintf(stderr, "wait failed.\n");
-      exit(EXIT_FAILURE);
-    }
-    printf("[pid=%d]  child process=%d\n", getpid(), pid);
-  }
 
-  return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }

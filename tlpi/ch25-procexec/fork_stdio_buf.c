@@ -5,46 +5,46 @@
 #include <unistd.h>
 
 void v1() {
-  printf("hello, world\n");
-  write(STDOUT_FILENO, "abc\n", 4);
+    printf("hello, world\n");
+    write(STDOUT_FILENO, "abc\n", 4);
 
-  if (fork() == -1) {
-    perror("fork");
-    exit(EXIT_FAILURE);
-  }
+    if (fork() == -1) {
+        perror("fork");
+        exit(EXIT_FAILURE);
+    }
 
-  exit(EXIT_SUCCESS);
+    exit(EXIT_SUCCESS);
 }
 
 void v2() {
-  printf("hello, world\n");
-  write(STDOUT_FILENO, "abc\n", 4);
+    printf("hello, world\n");
+    write(STDOUT_FILENO, "abc\n", 4);
 
-  pid_t pid = fork();
+    pid_t pid = fork();
 
-  switch (pid) {
-  case -1:
-    perror("fork");
-    exit(EXIT_FAILURE);
-  case 0:
-    _exit(EXIT_SUCCESS);
-    break;
-  default:
-    exit(EXIT_SUCCESS);
-  }
+    switch (pid) {
+    case -1:
+        perror("fork");
+        exit(EXIT_FAILURE);
+    case 0:
+        _exit(EXIT_SUCCESS);
+        break;
+    default:
+        exit(EXIT_SUCCESS);
+    }
 }
 
 void v3() {
-  setbuf(stdout, NULL);
-  printf("hello, world\n");
-  write(STDOUT_FILENO, "abc\n", 4);
+    setbuf(stdout, NULL);
+    printf("hello, world\n");
+    write(STDOUT_FILENO, "abc\n", 4);
 
-  if (fork() == -1) {
-    perror("fork");
-    exit(EXIT_FAILURE);
-  }
+    if (fork() == -1) {
+        perror("fork");
+        exit(EXIT_FAILURE);
+    }
 
-  exit(EXIT_SUCCESS);
+    exit(EXIT_SUCCESS);
 }
 
 /*
@@ -62,12 +62,12 @@ cc -D V1 fork_stdio_buf.c
 */
 int main() {
 #ifdef V1
-  // printf("v1\n");
-  v1();
+    // printf("v1\n");
+    v1();
 #elif V2
-  // printf("v2\n");
-  v2();
+    // printf("v2\n");
+    v2();
 #else
-  v3();
+    v3();
 #endif
 }

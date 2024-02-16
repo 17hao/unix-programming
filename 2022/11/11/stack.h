@@ -1,8 +1,8 @@
 #define STACK_SIZE 1 << 10
 
 struct stack {
-  int values[STACK_SIZE];
-  int cur;
+    int values[STACK_SIZE];
+    int cur;
 };
 
 // stack push
